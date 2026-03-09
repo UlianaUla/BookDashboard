@@ -552,3 +552,50 @@ body.dark-theme {
 .dark-theme .restore-btn:hover {
     background-color: #5f4a3c !important;
 }
+/* Секция с кнопками (обе по середине) */
+.button-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.restore-container {
+    margin-top: 5px;
+}
+
+.restore-btn {
+    background-color: #9c7a5c !important;
+    color: white !important;
+    border: 2px solid #8b6b55 !important;
+    animation: fadeIn 0.5s ease;
+}
+
+.restore-btn:hover {
+    background-color: #8b6b55 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(139, 107, 85, 0.3);
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Для тёмной темы */
+.dark-theme .restore-btn {
+    background-color: #6b5a4a !important;
+    border: 2px solid #5f4a3c !important;
+}
+
+.dark-theme .restore-btn:hover {
+    background-color: #5f4a3c !important;
+}
