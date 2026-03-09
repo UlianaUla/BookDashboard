@@ -14,7 +14,7 @@ export default class SubjectsWidget extends UIComponent {
         
         const input = document.createElement('input');
         input.className = 'search-input';
-        input.placeholder = '🔍 Введите тему (science, love...)';
+        input.placeholder = ' Введите тему (...)';
         input.value = 'science';
         
         const btn = document.createElement('button');
@@ -41,6 +41,7 @@ export default class SubjectsWidget extends UIComponent {
         return widget;
     }
     
+   
     async search(query, container) {
         if (!query) {
             container.innerHTML = '<div class="error">✗ Введите тему</div>';
@@ -50,24 +51,29 @@ export default class SubjectsWidget extends UIComponent {
         container.innerHTML = '<div class="loader">⋯ Загрузка ⋯</div>';
         
         try {
-            const response = await fetch(
-                `${this.apiUrl}/subjects/${query}.json?limit=5`,
-                { headers: { 'User-Agent': 'DashboardApp' } }
-            );
+            const url = `${this.apiUrl}/subjects/${query}.json?limit=5`;
             
-            if (!response.ok) throw new Error('Ошибка');
+            const response = await fetch(url, {
+                headers: { 'User-Agent': 'DashboardApp' }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ошибка! статус: ${response.status}`);
+            }
             
             const data = await response.json();
             
-            if (data.works?.length) {
+            if (data.works && data.works.length > 0) {
                 this.display(data.works, query, container);
             } else {
                 container.innerHTML = '<div class="no-results">✗ Ничего не найдено</div>';
             }
         } catch (error) {
-            container.innerHTML = '<div class="error">✗ Ошибка загрузки</div>';
+            console.error('Ошибка API:', error);
+            container.innerHTML = '<div class="error">✗ Ошибка загрузки. Попробуйте позже</div>';
         }
     }
+    
     
     display(works, subject, container) {
         const list = document.createElement('div');

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Книжный дашборд</title>
     
-    <!-- Подключаем шрифты -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Подключаем стили - используем абсолютные пути для GitHub Pages -->
-    <link rel="stylesheet" href="https://ulianaula.github.io/BookDashboard/main.css">
-    <link rel="stylesheet" href="https://ulianaula.github.io/BookDashboard/components.css">
+    
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="components.css">
 </head>
 <body class="light-theme">
     <div class="container">
@@ -21,14 +21,21 @@
             <button class="theme-toggle" id="themeToggle">🌙 Тёмная тема</button>
         </div>
         
-        <div class="btn-container">
-            <button class="btn" id="addWorksBtn">✧ Поиск книги ✧</button>
+        
+        <div class="button-section">
+            <div class="btn-container">
+                <button class="btn" id="addWorksBtn">✧ Поиск книги ✧</button>
+            </div>
+            
+            
+            <div class="btn-container restore-container" id="restoreContainer" style="display: none;">
+                <button class="btn restore-btn" id="restoreWidgetsBtn">↺ Вернуть виджеты</button>
+            </div>
         </div>
         
         <div class="grid" id="dashboardGrid"></div>
     </div>
 
-    <!-- Подключаем JS -->
-    <script type="module" src="https://ulianaula.github.io/BookDashboard/main.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>

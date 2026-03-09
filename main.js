@@ -1,18 +1,13 @@
 import Dashboard from './Dashboard.js';
 
-// Функция переключения темы
-function setupThemeToggle(dashboard) {
+function setupThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+    
     const body = document.body;
-    
-    if (!themeToggle) {
-        console.error('Кнопка переключения темы не найдена');
-        return;
-    }
-    
     const savedTheme = localStorage.getItem('theme') || 'light-theme';
     body.className = savedTheme;
-    themeToggle.textContent = savedTheme === 'light-theme' ? ' Тёмная тема' : ' Светлая тема';
+    themeToggle.textContent = savedTheme === 'light-theme' ? '🌙 Тёмная тема' : '☀️ Светлая тема';
     
     themeToggle.addEventListener('click', () => {
         if (body.classList.contains('light-theme')) {
@@ -29,56 +24,40 @@ function setupThemeToggle(dashboard) {
     });
 }
 
-// Функция проверки и обновления видимости кнопки возврата
+
 function updateRestoreButtonVisibility(dashboard) {
     const restoreContainer = document.getElementById('restoreContainer');
     
-    // Если элемент не найден
+    // Проверка существование элемента
     if (!restoreContainer) {
-        console.log('Кнопка возврата не найдена в DOM');
+        console.log('Кнопка возврата не найдена - пропускаем');
         return;
     }
     
     const subjectsWidgets = dashboard.widgets.filter(w => w.title && w.title.includes('Книги по теме')).length;
     const authorsWidgets = dashboard.widgets.filter(w => w.title && w.title.includes('Авторы')).length;
     
-    // Проверка хотя бы одного виджета
     const hasSubjects = subjectsWidgets > 0;
     const hasAuthors = authorsWidgets > 0;
     
-    
     if (!hasSubjects || !hasAuthors) {
-        restoreContainer.style.display = 'flex';  // Показ кнопк
-        console.log('Показываем кнопку возврата');
+        restoreContainer.style.display = 'flex';
     } else {
-        restoreContainer.style.display = 'none';   // скрытие кнопки
-        console.log('Скрываем кнопку возврата');
+        restoreContainer.style.display = 'none';
     }
 }
 
-// инициализация дашборда
 function initDashboard() {
-    console.log('Инициализация дашборда...');
-    
     const gridElement = document.getElementById('dashboardGrid');
-    if (!gridElement) {
-        console.error('Элемент dashboardGrid не найден!');
-        return;
-    }
+    if (!gridElement) return;
     
-    console.log('Элемент dashboardGrid найден, создаем дашборд');
-    
-    // Создание дашборда
     const dashboard = new Dashboard('dashboardGrid');
     
-    // Добавление двух виджетот сразу
     dashboard.addWidget('subjects');
     dashboard.addWidget('authors');
     
-    // переключатель темы
-    setupThemeToggle(dashboard);
+    setupThemeToggle();
     
-    // Кнопка для третьего виджета
     const addBtn = document.getElementById('addWorksBtn');
     if (addBtn) {
         addBtn.addEventListener('click', () => {
@@ -86,43 +65,30 @@ function initDashboard() {
         });
     }
     
-    // Кнопка возврата виджетов (проверка существования)
     const restoreBtn = document.getElementById('restoreWidgetsBtn');
     if (restoreBtn) {
         restoreBtn.addEventListener('click', () => {
-            // Проверяем, каких виджетов не хватает
             const hasSubjects = dashboard.widgets.some(w => w.title && w.title.includes('Книги по теме'));
             const hasAuthors = dashboard.widgets.some(w => w.title && w.title.includes('Авторы'));
             
-            if (!hasSubjects) {
-                dashboard.addWidget('subjects');
-            }
-            if (!hasAuthors) {
-                dashboard.addWidget('authors');
-            }
+            if (!hasSubjects) dashboard.addWidget('subjects');
+            if (!hasAuthors) dashboard.addWidget('authors');
             
-            // видимость кнопки
             updateRestoreButtonVisibility(dashboard);
         });
-    } else {
-        console.log('Кнопка возврата не найдена - функция недоступна');
     }
     
-    
     document.addEventListener('widget:close', () => {
-        
         setTimeout(() => {
             updateRestoreButtonVisibility(dashboard);
         }, 100);
     });
     
-    // Первоначальная проверка 
     setTimeout(() => {
         updateRestoreButtonVisibility(dashboard);
     }, 500);
 }
 
-// Запуск
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initDashboard);
 } else {

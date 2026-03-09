@@ -14,7 +14,7 @@ export default class AuthorsWidget extends UIComponent {
         
         const input = document.createElement('input');
         input.className = 'search-input';
-        input.placeholder = ' Введите имя автора (...)';
+        input.placeholder = '✒️ Введите имя автора (tolkien...)';
         input.value = 'tolkien';
         
         const btn = document.createElement('button');
@@ -41,6 +41,7 @@ export default class AuthorsWidget extends UIComponent {
         return widget;
     }
     
+    
     async search(query, container) {
         if (!query) {
             container.innerHTML = '<div class="error">✗ Введите имя</div>';
@@ -50,16 +51,19 @@ export default class AuthorsWidget extends UIComponent {
         container.innerHTML = '<div class="loader">⋯ Поиск ⋯</div>';
         
         try {
-            const response = await fetch(
-                `${this.apiUrl}/search/authors.json?q=${query}&limit=2`,
-                { headers: { 'User-Agent': 'DashboardApp' } }
-            );
+            const url = `${this.apiUrl}/search/authors.json?q=${encodeURIComponent(query)}&limit=2`;
             
-            if (!response.ok) throw new Error('Ошибка');
+            const response = await fetch(url, {
+                headers: { 'User-Agent': 'DashboardApp' }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ошибка! статус: ${response.status}`);
+            }
             
             const data = await response.json();
             
-            if (data.docs?.length) {
+            if (data.docs && data.docs.length > 0) {
                 const authors = await Promise.all(
                     data.docs.map(a => this.getAuthor(a.key))
                 );
@@ -68,9 +72,11 @@ export default class AuthorsWidget extends UIComponent {
                 container.innerHTML = '<div class="no-results">✗ Не найдено</div>';
             }
         } catch (error) {
-            container.innerHTML = '<div class="error">✗ Ошибка</div>';
+            console.error('Ошибка API:', error);
+            container.innerHTML = '<div class="error">✗ Ошибка загрузки. Попробуйте позже</div>';
         }
     }
+  
     
     async getAuthor(key) {
         try {
@@ -98,7 +104,7 @@ export default class AuthorsWidget extends UIComponent {
             
             const bio = document.createElement('div');
             bio.className = 'card-author';
-            bio.textContent = author.bio?.substring?.(0, 100) + '...' || ' Нет биографии';
+            bio.textContent = author.bio?.substring?.(0, 100) + '...' || '📖 Нет биографии';
             
             card.appendChild(name);
             card.appendChild(bio);

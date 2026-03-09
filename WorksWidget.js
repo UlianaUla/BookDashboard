@@ -41,6 +41,7 @@ export default class WorksWidget extends UIComponent {
         return widget;
     }
     
+    
     async search(query, container) {
         if (!query) {
             container.innerHTML = '<div class="error">✗ Введите название</div>';
@@ -50,24 +51,29 @@ export default class WorksWidget extends UIComponent {
         container.innerHTML = '<div class="loader">⋯ Поиск ⋯</div>';
         
         try {
-            const response = await fetch(
-                `${this.apiUrl}/search.json?q=${query}&limit=3`,
-                { headers: { 'User-Agent': 'DashboardApp' } }
-            );
+            const url = `${this.apiUrl}/search.json?q=${encodeURIComponent(query)}&limit=3`;
             
-            if (!response.ok) throw new Error('Ошибка');
+            const response = await fetch(url, {
+                headers: { 'User-Agent': 'DashboardApp' }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ошибка! статус: ${response.status}`);
+            }
             
             const data = await response.json();
             
-            if (data.docs?.length) {
+            if (data.docs && data.docs.length > 0) {
                 this.display(data.docs, container);
             } else {
                 container.innerHTML = '<div class="no-results">✗ Не найдено</div>';
             }
         } catch (error) {
-            container.innerHTML = '<div class="error">✗ Ошибка</div>';
+            console.error('Ошибка API:', error);
+            container.innerHTML = '<div class="error">✗ Ошибка загрузки. Попробуйте позже</div>';
         }
     }
+   
     
     display(works, container) {
         const list = document.createElement('div');
