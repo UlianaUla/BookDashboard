@@ -1,0 +1,554 @@
+/* Базовые стили */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    padding: 20px;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Светлая тема */
+body.light-theme {
+    background-color: #f5efe6;
+    color: #2c3e50;
+}
+
+.light-theme .header {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(210, 180, 140, 0.3);
+}
+
+.light-theme .header h1 {
+    color: #8b5a2b;
+}
+
+/* Кнопка добавления виджета */
+.light-theme .btn {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid #c4a484;
+    color: #8b5a2b;
+}
+
+.light-theme .btn:hover {
+    background-color: #c4a484;
+    color: white;
+}
+
+/* Виджеты */
+.light-theme .widget {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e8d9cd;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .widget:hover {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: #c4a484;
+    box-shadow: 0 15px 30px rgba(139, 90, 43, 0.15);
+}
+
+.light-theme .widget-header {
+    background: rgba(245, 239, 230, 0.7);
+    border-bottom: 1px solid #e8d9cd;
+}
+
+.light-theme .widget-title {
+    color: #8b5a2b;
+}
+
+/* Кнопки управления виджетом */
+.light-theme .widget-btn {
+    border: 1px solid #c4a484;
+    background: rgba(255, 255, 255, 0.8);
+    color: #8b5a2b;
+}
+
+.light-theme .widget-btn:hover {
+    background: #c4a484;
+    color: white;
+}
+
+/* Поле поиска */
+.light-theme .search-input {
+    border: 2px solid #e8d9cd;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
+}
+
+.light-theme .search-input:focus {
+    border-color: #c4a484;
+    box-shadow: 0 0 0 3px rgba(196, 164, 132, 0.2);
+}
+
+/* Карточки результатов */
+.light-theme .card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #e8d9cd;
+}
+
+.light-theme .card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: #c4a484;
+}
+
+.light-theme .card-title {
+    color: #8b5a2b;
+}
+
+.light-theme .card-author {
+    color: #a17f6b;
+}
+
+/* Тёмная тема */
+body.dark-theme {
+    background-color: #1a1e24;
+    color: #e0e0e0;
+}
+
+.dark-theme .header {
+    background-color: rgba(30, 35, 40, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid #4a4f55;
+}
+
+.dark-theme .header h1 {
+    color: #e0b087;
+}
+
+.dark-theme .btn {
+    background-color: rgba(50, 55, 60, 0.8);
+    border: 2px solid #b68b6b;
+    color: #e0b087;
+}
+
+.dark-theme .btn:hover {
+    background-color: #b68b6b;
+    color: #1a1e24;
+}
+
+.dark-theme .widget {
+    background: rgba(35, 40, 45, 0.95);
+    border: 1px solid #4a4f55;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .widget:hover {
+    background: rgba(45, 50, 55, 0.98);
+    border-color: #b68b6b;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .widget-header {
+    background: rgba(50, 55, 60, 0.9);
+    border-bottom: 1px solid #5a5f65;
+}
+
+.dark-theme .widget-title {
+    color: #e0b087;
+}
+
+.dark-theme .widget-btn {
+    border: 1px solid #b68b6b;
+    background: rgba(60, 65, 70, 0.9);
+    color: #e0b087;
+}
+
+.dark-theme .widget-btn:hover {
+    background: #b68b6b;
+    color: #1a1e24;
+}
+
+.dark-theme .search-input {
+    border: 2px solid #5a5f65;
+    background: rgba(40, 45, 50, 0.9);
+    color: #e0e0e0;
+}
+
+.dark-theme .search-input::placeholder {
+    color: #888;
+}
+
+.dark-theme .search-input:focus {
+    border-color: #b68b6b;
+    box-shadow: 0 0 0 3px rgba(182, 139, 107, 0.2);
+}
+
+.dark-theme .card {
+    background: rgba(45, 50, 55, 0.8);
+    border: 1px solid #5a5f65;
+}
+
+.dark-theme .card:hover {
+    background: rgba(55, 60, 65, 0.95);
+    border-color: #b68b6b;
+}
+
+.dark-theme .card-title {
+    color: #e0b087;
+}
+
+.dark-theme .card-author {
+    color: #b0a090;
+}
+
+/* Кнопки поиска в тёмной теме */
+.dark-theme .subjects-btn {
+    background: #8b6b55;
+}
+.dark-theme .subjects-btn:hover {
+    background: #a07d63;
+}
+
+.dark-theme .authors-btn {
+    background: #7d6b5a;
+}
+.dark-theme .authors-btn:hover {
+    background: #917b68;
+}
+
+.dark-theme .works-btn {
+    background: #6b5a4a;
+}
+.dark-theme .works-btn:hover {
+    background: #7f6b58;
+}
+
+.dark-theme .loader, 
+.dark-theme .no-results {
+    color: #e0b087;
+}
+
+.dark-theme .error {
+    color: #ff8a7a;
+}
+
+/* Оющие независимые стили */
+
+/* Шапка с переключателем темы */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(8px);
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.header h1 {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* Кнопка переключения темы */
+.theme-toggle {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+.light-theme .theme-toggle {
+    background: rgba(139, 90, 43, 0.1);
+    color: #8b5a2b;
+    border: 1px solid #c4a484;
+}
+
+.light-theme .theme-toggle:hover {
+    background: #c4a484;
+    color: white;
+}
+
+.dark-theme .theme-toggle {
+    background: rgba(182, 139, 107, 0.2);
+    color: #e0b087;
+    border: 1px solid #b68b6b;
+}
+
+.dark-theme .theme-toggle:hover {
+    background: #b68b6b;
+    color: #1a1e24;
+}
+
+/* Контейнер для кнопки добавления */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* Кнопка добавления виджета */
+.btn {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    padding: 12px 40px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    letter-spacing: 1px;
+}
+
+/* Сетка для виджетов */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+/* Стили виджетов */
+.widget {
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    cursor: move;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: move;
+}
+
+.widget-title {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.widget-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.widget-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.widget-content {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+/* Форма поиска */
+.search-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.search-form:hover {
+    transform: scale(1.02);
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 40px;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #c4a484;
+    box-shadow: 0 0 0 3px rgba(196, 164, 132, 0.2);
+    transform: scale(1.02);
+}
+
+/* Кнопка поиска */
+.subjects-btn, .authors-btn, .works-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 40px;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+/* Дополнительные эффекты для кнопок в тёмной теме */
+.dark-theme .subjects-btn:hover {
+    background: #6b4f3f;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .authors-btn:hover {
+    background: #5f4a3c;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .works-btn:hover {
+    background: #4f3f35;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Результаты роиска */
+.card {
+    padding: 15px;
+    border-radius: 25px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+
+.card-title {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.card-item {
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 8px;
+}
+
+.card-author {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+/* Загрузка и ошибки */
+.loader, .error, .no-results {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    text-align: center;
+    padding: 30px;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.loader {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Crhjkk */
+.widget-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.widget-content::-webkit-scrollbar-track {
+    background: #f5efe6;
+    border-radius: 10px;
+}
+
+.dark-theme .widget-content::-webkit-scrollbar-track {
+    background: #3a4048;
+}
+
+.widget-content::-webkit-scrollbar-thumb {
+    background: #c4a484;
+    border-radius: 10px;
+}
+
+.dark-theme .widget-content::-webkit-scrollbar-thumb {
+    background: #b68b6b;
+}
+
+.widget-content::-webkit-scrollbar-thumb:hover {
+    background: #8b5a2b;
+}
+
+.dark-theme .widget-content::-webkit-scrollbar-thumb:hover {
+    background: #8b6b55;
+}
+/* Секция с кнопками  */
+.button-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.restore-container {
+    margin-top: 5px;
+}
+
+.restore-btn {
+    background-color: #9c7a5c !important;
+    color: white !important;
+    border: 2px solid #8b6b55 !important;
+    animation: fadeIn 0.5s ease;
+}
+
+.restore-btn:hover {
+    background-color: #8b6b55 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(139, 107, 85, 0.3);
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Для тёмной темы */
+.dark-theme .restore-btn {
+    background-color: #6b5a4a !important;
+    border: 2px solid #5f4a3c !important;
+}
+
+.dark-theme .restore-btn:hover {
+    background-color: #5f4a3c !important;
+}

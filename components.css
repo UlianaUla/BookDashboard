@@ -1,0 +1,141 @@
+.widget {
+    background: white;
+    border: 1px solid #dce4ec;
+    border-radius: 10px;
+    cursor: move;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e9ecef;
+    border-radius: 10px 10px 0 0;
+}
+
+.widget-title {
+    font-size: 15px;
+    color: #34495e;
+}
+
+.widget-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.widget-btn {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #bdc3c7;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.widget-content {
+    padding: 15px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+/* Subjects */
+.subjects-search-form,
+.authors-search-form,
+.works-search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.subjects-search-input,
+.authors-search-input,
+.works-search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #dde2e8;
+    border-radius: 5px;
+}
+
+.subjects-search-btn {
+    padding: 8px 16px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.authors-search-btn {
+    padding: 8px 16px;
+    background: #9b59b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.works-search-btn {
+    padding: 8px 16px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subject-card,
+.author-card,
+.work-card {
+    padding: 12px;
+    background: #f8fafc;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.subject-name,
+.author-name,
+.work-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.subject-work,
+.author-work {
+    padding: 8px;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.subject-work-title {
+    font-size: 14px;
+}
+
+.subject-work-author,
+.author-bio {
+    font-size: 13px;
+    color: #7f8c8d;
+    margin-top: 3px;
+}
+
+.author-bio {
+    max-height: 60px;
+    overflow-y: auto;
+    margin-bottom: 8px;
+}
+
+.loader, .error, .no-results {
+    text-align: center;
+    padding: 25px;
+    color: #7f8c8d;
+}
+
+.error {
+    color: #e74c3c;
+}
